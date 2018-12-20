@@ -1,8 +1,10 @@
 import React from 'react';
 
+import Items from '../components/Items';
+
 const Index = () => (
   <div>
-    <h1>Index page</h1>
+    <Items />
   </div>
 );
 
