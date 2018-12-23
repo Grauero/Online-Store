@@ -1,6 +1,6 @@
 import React from 'react';
 
-import CreateItem from '../components/CreateItem';
+import CreateItem from '../components/items/CreateItem';
 
 const Sell = () => (
   <div>

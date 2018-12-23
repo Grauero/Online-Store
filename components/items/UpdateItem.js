@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { Mutation, Query } from 'react-apollo';
 import gql from 'graphql-tag';
 
-import Form from './styles/Form';
-import ErrorMessage from './ErrorMessage';
+import Form from '../styles/Form';
+import ErrorMessage from '../error/ErrorMessage';
 
 const SINGLE_ITEM_QUERY = gql`
   query SINGLE_ITEM_QUERY($id: ID!) {

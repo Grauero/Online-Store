@@ -3,8 +3,8 @@ import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import Router from 'next/router';
 
-import Form from './styles/Form';
-import ErrorMessage from './ErrorMessage';
+import Form from '../styles/Form';
+import ErrorMessage from '../error/ErrorMessage';
 
 const CREATE_ITEM_MUTATION = gql`
   mutation CREATE_ITEM_MUTATION(

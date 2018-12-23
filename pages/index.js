@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Items from '../components/Items';
+import Items from '../components/items/Items';
 
 const Index = () => (
   <div>
