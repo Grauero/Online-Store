@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 
+import DeleteItem from './DeleteItem';
 import ItemStyles from './styles/ItemStyles';
 import PriceTag from './styles/PriceTag';
 import Title from './styles/Title';
@@ -32,7 +33,7 @@ const Item = ({ item }) => (
         <a>Edit &#9999;&#65039; </a>
       </Link>
       <button type="button">Add To Cart</button>
-      <button type="button">Delete</button>
+      <DeleteItem id={item.id}>Delete This Item</DeleteItem>
     </div>
   </ItemStyles>
 );

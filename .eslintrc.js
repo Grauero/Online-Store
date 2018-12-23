@@ -45,6 +45,7 @@ module.exports = {
     'global-require': 0,
     'jsx-a11y/anchor-is-valid': 0,
     'no-unused-expressions': 0,
-    'jsx-a11y/accessible-emoji': 0
+    'jsx-a11y/accessible-emoji': 0,
+    'no-restricted-globals': 0
   }
 };
