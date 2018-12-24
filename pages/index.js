@@ -1,11 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Items from '../components/items/Items';
 
-const Index = () => (
+const Home = ({ query: { page } }) => (
   <div>
-    <Items />
+    <Items page={parseFloat(page) || 1} />
   </div>
 );
 
-export default Index;
+Home.propTypes = {
+  query: PropTypes.instanceOf(Object).isRequired
+};
+
+export default Home;
