@@ -30,7 +30,7 @@ const Mutation = {
   },
   async deleteItem(parent, args, ctx, info) {
     const where = { id: args.id };
-    const item = await ctx.db.query.item({ where }, '{ id title }');
+    await ctx.db.query.item({ where }, '{ id title }');
 
     return ctx.db.mutation.deleteItem({ where }, info);
   },
@@ -55,6 +55,30 @@ const Mutation = {
     });
 
     return user;
+  },
+  async signin(parent, { email, password }, ctx) {
+    const user = await ctx.db.query.user({ where: { email } });
+    if (!user) {
+      throw new Error(`No such user found for email: ${email}`);
+    }
+
+    const valid = await bcrypt.compare(password, user.password);
+    if (!valid) {
+      throw new Error('Invalid password!');
+    }
+
+    const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
+    ctx.response.cookie('token', token, {
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24 // 24 hours
+    });
+
+    return user;
+  },
+  signout(parent, args, ctx) {
+    ctx.response.clearCookie('token');
+
+    return { message: 'Log Out' };
   }
 };
 
