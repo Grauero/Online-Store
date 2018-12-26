@@ -46,7 +46,7 @@ class Signin extends Component {
         refetchQueries={[{ query: CURRENT_USER_QUERY }]}
       >
         {(signup, { error, loading }) => (
-          <Form method="post" onSubmit={(e, signup) => this.formSubmit(e, signup)}>
+          <Form method="post" onSubmit={e => this.formSubmit(e, signup)}>
             <fieldset disabled={loading} aria-busy={loading}>
               <h2>Sign into your Account</h2>
               <ErrorMessage error={error} />

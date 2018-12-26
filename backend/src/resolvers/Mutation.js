@@ -96,6 +96,8 @@ const Mutation = {
       where: { email },
       data: { resetToken, resetTokenExpiry }
     });
+
+    return { message: 'Reset password' };
   },
   async resetPassword(parent, { password, confirmPassword, resetToken }, ctx) {
     if (password !== confirmPassword) {

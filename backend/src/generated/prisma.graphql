@@ -1,5 +1,5 @@
 # source: https://eu1.prisma.sh/grayero6996-230b7b/online-store/dev
-# timestamp: Mon Dec 24 2018 16:36:53 GMT+0300 (RTZ 2 (зима))
+# timestamp: Wed Dec 26 2018 18:19:41 GMT+0300 (RTZ 2 (зима))
 
 type AggregateItem {
   count: Int!
@@ -452,7 +452,7 @@ type User implements Node {
   name: String!
   email: String!
   password: String!
-  resetToken: String!
+  resetToken: String
   resetTokenExpiry: Float
   permissions: [Permission!]!
 }
@@ -471,7 +471,7 @@ input UserCreateInput {
   name: String!
   email: String!
   password: String!
-  resetToken: String!
+  resetToken: String
   resetTokenExpiry: Float
   permissions: UserCreatepermissionsInput
 }
@@ -513,7 +513,7 @@ type UserPreviousValues {
   name: String!
   email: String!
   password: String!
-  resetToken: String!
+  resetToken: String
   resetTokenExpiry: Float
   permissions: [Permission!]!
 }
