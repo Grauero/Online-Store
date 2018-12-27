@@ -3,6 +3,8 @@ const jwt = require('jsonwebtoken');
 const { randomBytes } = require('crypto');
 const { promisify } = require('util');
 
+const { transport, generateEmail } = require('../mail');
+
 const Mutation = {
   async createItem(parent, args, ctx, info) {
     const item = await ctx.db.mutation.createItem(
@@ -37,6 +39,7 @@ const Mutation = {
     return ctx.db.mutation.deleteItem({ where }, info);
   },
   async signup(parent, args, ctx, info) {
+    // create user
     args.email = args.email.toLowerCase();
     const password = await bcrypt.hash(args.password, 10);
     const user = await ctx.db.mutation.createUser(
@@ -50,6 +53,7 @@ const Mutation = {
       info
     );
 
+    // generate new JWT token for user
     const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
     ctx.response.cookie('token', token, {
       httpOnly: true,
@@ -69,6 +73,7 @@ const Mutation = {
       throw new Error('Invalid password!');
     }
 
+    // if user provided valid data give him JWT token
     const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
     ctx.response.cookie('token', token, {
       httpOnly: true,
@@ -89,12 +94,25 @@ const Mutation = {
       throw new Error(`No such user found for email: ${email}`);
     }
 
-    // token for reseting users password
+    // generate JWT token for reseting users password
     const resetToken = (await promisify(randomBytes)(20)).toString('hex');
     const resetTokenExpiry = Date.now() + 3600000; // 1 hour
-    const res = await ctx.db.mutation.updateUser({
+    await ctx.db.mutation.updateUser({
       where: { email },
       data: { resetToken, resetTokenExpiry }
+    });
+
+    // send email with generated token
+    await transport.sendMail({
+      from: 'noreply@noreply.com',
+      to: user.email,
+      subject: 'Your Password Reset Token',
+      html: generateEmail(`Your Password Reset Token is here!
+      \n\n
+      <a href="${process.env.FRONTEND_URL}/reset?resetToken=${resetToken}">
+        Click Here to Reset Password.
+      </a>
+      `)
     });
 
     return { message: 'Reset password' };
