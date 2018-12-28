@@ -6,7 +6,7 @@ import gql from 'graphql-tag';
 import { ALL_ITEMS_QUERY } from './Items';
 
 const DELETE_ITEM_MUTATION = gql`
-  mutation DELETE_ITEM_MUTATION($id: id) {
+  mutation DELETE_ITEM_MUTATION($id: ID!) {
     deleteItem(id: $id) {
       id
     }
