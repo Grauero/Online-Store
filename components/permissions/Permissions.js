@@ -31,14 +31,14 @@ const Permissions = () => (
                 <th>Name</th>
                 <th>Email</th>
                 {POSSIBLE_PERMISSIONS.map(permission => (
-                  <th>{permission}</th>
+                  <th key={permission}>{permission}</th>
                 ))}
                 <th>Update Permission</th>
               </tr>
             </thead>
             <tbody>
               {data.users.map(user => (
-                <UserPermissions user={user} />
+                <UserPermissions key={user.id} user={user} />
               ))}
             </tbody>
           </Table>
