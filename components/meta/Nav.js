@@ -5,7 +5,7 @@ import { Mutation } from 'react-apollo';
 import User from '../auth/User';
 import Signout from '../auth/Signout';
 import NavStyles from '../styles/NavStyles';
-import { TOGGLE_CART_MUTATION } from '../items/Cart';
+import { TOGGLE_CART_MUTATION } from '../cart/Cart';
 
 const Nav = () => (
   <User>
