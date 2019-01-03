@@ -10,6 +10,17 @@ const CURRENT_USER_QUERY = gql`
       email
       name
       permissions
+      cart {
+        id
+        quantity
+        item {
+          id
+          price
+          image
+          title
+          description
+        }
+      }
     }
   }
 `;
@@ -24,5 +35,5 @@ User.propTypes = {
   children: PropTypes.func.isRequired
 };
 
-export { CURRENT_USER_QUERY };
 export default User;
+export { CURRENT_USER_QUERY };

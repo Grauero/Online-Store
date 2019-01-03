@@ -71,5 +71,5 @@ Pagination.propTypes = {
   page: PropTypes.number.isRequired
 };
 
-export { PAGINATION_QUERY };
 export default Pagination;
+export { PAGINATION_QUERY };
