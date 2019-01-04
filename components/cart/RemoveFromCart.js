@@ -25,9 +25,27 @@ const BigButton = styled.button`
   }
 `;
 
+// this function gets called when comes response from the server after a mutation has been performed
+const update = (cache, payload) => {
+  const data = cache.readQuery({ query: CURRENT_USER_QUERY });
+  // remove item from cart
+  const cartItemId = payload.data.removeFromCart.id;
+  data.me.cart = data.me.cart.filter(cartItem => cartItem.id !== cartItemId);
+
+  cache.writeQuery({ query: CURRENT_USER_QUERY });
+};
+
 const RemoveFromCart = ({ id }) => (
-  <Mutation mutation={REMOVE_FROM_CART_MUTATION} variables={id}>
-    {(removeFromCart, { loading, error }) => (
+  <Mutation
+    mutation={REMOVE_FROM_CART_MUTATION}
+    variables={id}
+    update={update}
+    optimisticResponse={{
+      __typename: 'Mutation',
+      removeFromCart: { __typename: 'CartItem', id }
+    }}
+  >
+    {(removeFromCart, { loading }) => (
       <BigButton
         disabled={loading}
         title="Delete Item"
