@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const { randomBytes } = require('crypto');
 const { promisify } = require('util');
 
+const stripe = require('../stripe');
 const { transport, generateEmail } = require('../mail');
 const { hasPermission } = require('../utils');
 
@@ -107,7 +108,6 @@ const Mutation = {
   },
   async requestReset(parent, { email }, ctx) {
     const user = await ctx.db.query.user({ where: { email } });
-
     if (!user) {
       throw new Error(`No such user found for email: ${email}`);
     }
@@ -261,6 +261,39 @@ const Mutation = {
       },
       info
     );
+  },
+  async createOrder(parent, args, ctx, info) {
+    const { userId } = ctx.request;
+    if (!userId) {
+      throw new Error('You must be signed in to complete this order!');
+    }
+
+    const user = await ctx.db.query.user(
+      { where: { id: userId } },
+      `{
+        id
+        name
+        email
+        cart {
+          id
+          quantity
+          item { title price id description image }
+        }
+      }`
+    );
+
+    // recalculate total price
+    const amount = user.cart.reduce(
+      (tally, cartItem) => tally + cartItem.item.price * cartItem.quantity,
+      0
+    );
+
+    // charge money
+    const charge = await stripe.charges.create({
+      amount,
+      currency: 'USD',
+      source: args.token
+    });
   }
 };
 

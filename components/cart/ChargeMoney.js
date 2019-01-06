@@ -10,6 +10,20 @@ import ErrorMessage from '../error/ErrorMessage';
 import User, { CURRENT_USER_QUERY } from '../auth/User';
 import calcTotalPrice from '../../util/calcTotalPrice';
 
+const CREATE_ORDER_MUTATION = gql`
+  mutation createOrder($token: String!) {
+    createOrder(token: $token) {
+      id
+      charge
+      total
+      items {
+        id
+        title
+      }
+    }
+  }
+`;
+
 function totalItems(cart) {
   return cart.reduce((tally, cartItem) => tally + cartItem.quantity, 0);
 }
@@ -17,24 +31,35 @@ function totalItems(cart) {
 class ChargeMoney extends Component {
   state = {};
 
-  onToken = (res) => {};
+  onToken = (res, createOrder) => {
+    createOrder({
+      variables: { token: res.id }
+    });
+  };
 
   render() {
     return (
       <User>
         {({ data: { me } }) => (
-          <StripeCheckout
-            amount={calcTotalPrice(me.cart)}
-            name="Online Store"
-            description={`Order of ${totalItems(me.cart)} items!`}
-            image={me.cart[0].item && me.cart[0].item.image}
-            stripeKey="pk_test_0ppta5Hribwa6JIqxG1xPebo"
-            currency="USD"
-            email={me.email}
-            token={res => this.onToken(res)}
+          <Mutation
+            mutation={CREATE_ORDER_MUTATION}
+            refetchQueries={[{ query: CURRENT_USER_QUERY }]}
           >
-            {this.props.children}
-          </StripeCheckout>
+            {createOrder => (
+              <StripeCheckout
+                amount={calcTotalPrice(me.cart)}
+                name="Online Store"
+                description={`Order of ${totalItems(me.cart)} items!`}
+                image={me.cart[0].item && me.cart[0].item.image}
+                stripeKey="pk_test_0ppta5Hribwa6JIqxG1xPebo"
+                currency="USD"
+                email={me.email}
+                token={res => this.onToken(res, createOrder)}
+              >
+                {this.props.children}
+              </StripeCheckout>
+            )}
+          </Mutation>
         )}
       </User>
     );
