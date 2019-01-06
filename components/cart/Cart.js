@@ -5,6 +5,7 @@ import { adopt } from 'react-adopt';
 
 import User from '../auth/User';
 import CartItem from './CartItem';
+import ChargeMoney from './ChargeMoney';
 import CartStyles from '../styles/CartStyles';
 import Supreme from '../styles/Supreme';
 import CloseButton from '../styles/CloseButton';
@@ -59,7 +60,9 @@ const Cart = () => (
           </ul>
           <footer>
             <p>{formatMoney(calcTotalPrice(me.cart))}</p>
-            <Button>Checkout</Button>
+            <ChargeMoney>
+              <Button>Checkout</Button>
+            </ChargeMoney>
           </footer>
         </CartStyles>
       );
