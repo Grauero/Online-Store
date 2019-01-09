@@ -1,4 +1,8 @@
 export default function (amount) {
+  if (typeof amount !== 'number' || amount < 0) {
+    return 'Incorrect format, provide a positive number value as argument';
+  }
+
   const options = {
     style: 'currency',
     currency: 'USD',
