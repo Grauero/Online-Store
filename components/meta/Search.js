@@ -53,7 +53,7 @@ class AutoComplete extends Component {
       <SearchStyles>
         <Downshift onChange={routeToItem} itemToString={item => (item === null ? '' : item.title)}>
           {({
-            getInputProps, getItemProps, isOpen, inputValue, highlighthedIndex
+            getInputProps, getItemProps, isOpen, inputValue, highlightedIndex
           }) => (
             <div>
               <ApolloConsumer>
@@ -78,7 +78,7 @@ class AutoComplete extends Component {
                   <DropDownItem
                     {...getItemProps({ item })}
                     key={item.id}
-                    highlighted={index === highlighthedIndex}
+                    highlighted={index === highlightedIndex}
                   >
                     <img width="50" src={item.image} alt={item.title} />
                     {item.title}

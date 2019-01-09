@@ -43,7 +43,7 @@ const Query = {
     // check if user have the permissions to see this order
     const ownsOrder = order.user.id === ctx.request.userId;
     const hasPermissionToSeeOrder = ctx.request.user.permissions.includes('ADMIN');
-    if (!ownsOrder || !hasPermissionToSeeOrder) {
+    if (!ownsOrder && !hasPermissionToSeeOrder) {
       throw new Error('You cant see the order');
     }
 

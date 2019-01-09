@@ -20,8 +20,8 @@ const OrderItem = ({
 OrderItem.propTypes = {
   image: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  quantity: PropTypes.string.isRequired,
-  price: PropTypes.string.isRequired,
+  quantity: PropTypes.number.isRequired,
+  price: PropTypes.number.isRequired,
   description: PropTypes.string.isRequired
 };
 

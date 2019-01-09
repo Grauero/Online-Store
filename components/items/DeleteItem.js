@@ -40,7 +40,7 @@ const DeleteItem = ({ id, children }) => {
 };
 
 DeleteItem.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired
 };
 

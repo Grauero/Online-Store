@@ -32,13 +32,13 @@ const update = (cache, payload) => {
   const cartItemId = payload.data.removeFromCart.id;
   data.me.cart = data.me.cart.filter(cartItem => cartItem.id !== cartItemId);
 
-  cache.writeQuery({ query: CURRENT_USER_QUERY });
+  cache.writeQuery({ query: CURRENT_USER_QUERY }, data);
 };
 
 const RemoveFromCart = ({ id }) => (
   <Mutation
     mutation={REMOVE_FROM_CART_MUTATION}
-    variables={id}
+    variables={{ id }}
     update={update}
     optimisticResponse={{
       __typename: 'Mutation',
@@ -49,7 +49,7 @@ const RemoveFromCart = ({ id }) => (
       <BigButton
         disabled={loading}
         title="Delete Item"
-        onClick={() => removeFromCart().catch(err => alert(err.message))}
+        onClick={() => removeFromCart().catch(err => console.log(err.message))}
       >
         &times;
       </BigButton>

@@ -27,7 +27,7 @@ const PleaseSignIn = props => (
 );
 
 PleaseSignIn.propTypes = {
-  children: PropTypes.func.isRequired
+  children: PropTypes.instanceOf(Object).isRequired
 };
 
 export default PleaseSignIn;
