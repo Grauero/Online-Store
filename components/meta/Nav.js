@@ -11,7 +11,7 @@ import { TOGGLE_CART_MUTATION } from '../cart/Cart';
 const Nav = () => (
   <User>
     {({ data: { me } }) => (
-      <NavStyles>
+      <NavStyles data-test="nav">
         <Link href="/items">
           <a>Shop</a>
         </Link>

@@ -73,3 +73,4 @@ SingleItem.propTypes = {
 };
 
 export default SingleItem;
+export { SINGLE_ITEM_QUERY };
