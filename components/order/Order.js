@@ -87,3 +87,4 @@ Order.propTypes = {
 };
 
 export default Order;
+export { SINGLE_ORDER_QUERY };
