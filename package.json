@@ -7,12 +7,13 @@
     "dev": "next -p 7777",
     "build": "next build",
     "start": "next start",
-    "test": "jest --watch",
+    "test": "jest",
     "heroku-postbuild": "next build"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/runtime": "^7.2.0",
     "apollo-boost": "^0.1.16",
     "apollo-client": "^2.4.2",
     "babel-core": "^7.0.0-bridge.0",
@@ -38,6 +39,10 @@
     "waait": "^1.0.2"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.2.3",
+    "@babel/plugin-transform-runtime": "^7.2.0",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/preset-react": "^7.0.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
     "babel-plugin-module-resolver": "^3.1.1",
@@ -51,18 +56,27 @@
     "eslint-plugin-react": "^7.11.1",
     "graphql-tools": "^4.0.0",
     "jest": "^23.6.0",
-    "jest-transform-graphql": "^2.1.0"
+    "jest-transform-graphql": "^2.1.0",
+    "jsdom": "13.1.0",
+    "jsdom-global": "3.0.2",
+    "regenerator-runtime": "^0.13.1"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>/jest.setup.js",
+    "moduleNameMapper": {
+      "\\.(css|less|sass|scss)$": "<rootDir>/__mocks__/styleMock.js",
+      "\\.(gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js"
+    },
     "testEnvironment": "node",
+    "testMatch": [
+      "<rootDir>/__tests__/*.{js,jsx,mjs}"
+    ],
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    },
     "testPathIgnorePatterns": [
       "<rootDir>/.next/",
       "<rootDir>/node_modules/"
-    ],
-    "transform": {
-      "\\.(gql|graphql)$": "jest-transform-graphql",
-      ".*": "babel-jest"
-    }
+    ]
   }
 }
