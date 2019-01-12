@@ -32,7 +32,7 @@ const update = (cache, payload) => {
   const cartItemId = payload.data.removeFromCart.id;
   data.me.cart = data.me.cart.filter(cartItem => cartItem.id !== cartItemId);
 
-  cache.writeQuery({ query: CURRENT_USER_QUERY }, data);
+  cache.writeQuery({ query: CURRENT_USER_QUERY, data });
 };
 
 const RemoveFromCart = ({ id }) => (
@@ -60,4 +60,6 @@ const RemoveFromCart = ({ id }) => (
 RemoveFromCart.propTypes = {
   id: PropTypes.string.isRequired
 };
+
 export default RemoveFromCart;
+export { REMOVE_FROM_CART_MUTATION };
