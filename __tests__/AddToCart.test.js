@@ -86,7 +86,7 @@ describe('<AddToCart/>', () => {
     } = await apolloClient.query({ query: CURRENT_USER_QUERY });
 
     expect(me2.cart).toHaveLength(1);
-    expect(me2.cart[0].id).toBe('omg123');
+    expect(me2.cart[0].id).toBe('id123');
     expect(me2.cart[0].quantity).toBe(3);
   });
 
