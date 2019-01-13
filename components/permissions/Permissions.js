@@ -18,33 +18,50 @@ const ALL_USERS_QUERY = gql`
   }
 `;
 
-const Permissions = () => (
-  <Query query={ALL_USERS_QUERY}>
-    {({ data, loading, error }) => (
+const showPermissionsTable = (error, data) => {
+  if (error || !data) {
+    return (
       <div>
         <ErrorMessage error={error} />
-        <div>
-          <h2>Manage Permissions</h2>
-          <Table>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Email</th>
-                {POSSIBLE_PERMISSIONS.map(permission => (
-                  <th key={permission}>{permission}</th>
-                ))}
-                <th>Update Permission</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data.users.map(user => (
-                <UserPermissions key={user.id} user={user} />
-              ))}
-            </tbody>
-          </Table>
-        </div>
       </div>
-    )}
+    );
+  }
+
+  return (
+    <div>
+      <div>
+        <h2>Manage Permissions</h2>
+        <Table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              {POSSIBLE_PERMISSIONS.map(permission => (
+                <th key={permission}>{permission}</th>
+              ))}
+              <th>Update Permission</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.users.map(user => (
+              <UserPermissions key={user.id} user={user} />
+            ))}
+          </tbody>
+        </Table>
+      </div>
+    </div>
+  );
+};
+
+const Permissions = () => (
+  <Query query={ALL_USERS_QUERY}>
+    {({ data, loading, error }) => {
+      if (loading) {
+        return <p>Loading...</p>;
+      }
+
+      return showPermissionsTable(error, data);
+    }}
   </Query>
 );
 
