@@ -20,7 +20,7 @@ const PAGINATION_QUERY = gql`
 
 const Pagination = ({ page }) => (
   <Query query={PAGINATION_QUERY}>
-    {({ data, loading, error }) => {
+    {({ data, loading }) => {
       if (loading) {
         return <p>Loading...</p>;
       }
@@ -29,7 +29,7 @@ const Pagination = ({ page }) => (
       const pages = Math.ceil(count / perPage);
 
       return (
-        <PaginationStyles>
+        <PaginationStyles data-test="pagination">
           <Head>
             <title>
               Online Store! — Page {page} of {pages}
@@ -47,7 +47,8 @@ const Pagination = ({ page }) => (
             </a>
           </Link>
           <p>
-            Page {page} of {pages}
+            Page {page} of
+            <span className="totalPages">{pages}</span>
           </p>
           <p>{count} Items Total</p>
           <Link

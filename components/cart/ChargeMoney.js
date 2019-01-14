@@ -68,3 +68,4 @@ ChargeMoney.propTypes = {
 };
 
 export default ChargeMoney;
+export { CREATE_ORDER_MUTATION };
