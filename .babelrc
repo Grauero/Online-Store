@@ -21,33 +21,3 @@
     }
   }
 }
-
-// {
-//   "presets": [
-//     "@babel/preset-react",
-//     ["@babel/preset-env", { "modules": false }]
-//   ],
-//   "plugins": [
-//     "@babel/plugin-proposal-class-properties",
-//     "@babel/plugin-transform-runtime"
-//   ],
-//   "env": {
-//     "test": {
-//       "presets": ["@babel/preset-env", "@babel/preset-react"],
-//       "plugins": ["babel-plugin-transform-es2015-modules-commonjs"]
-//     }
-//   }
-// }
-
-// {
-//   "presets": [
-//     "@babel/preset-react",
-//     ["@babel/preset-env", { "modules": false }]
-//   ],
-//   "env": {
-//     "test": {
-//       "presets": ["@babel/preset-env"],
-//       "plugins": ["transform-es2015-modules-commonjs"]
-//     }
-//   }
-// }

@@ -2,9 +2,9 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { randomBytes } = require('crypto');
 const { promisify } = require('util');
+const sendGrid = require('@sendgrid/mail');
 
 const stripe = require('../stripe');
-const { transport, generateEmail } = require('../mail');
 const { hasPermission } = require('../utils');
 
 const Mutation = {
@@ -120,18 +120,31 @@ const Mutation = {
       data: { resetToken, resetTokenExpiry }
     });
 
-    // send email with generated token
-    await transport.sendMail({
-      from: 'noreply@noreply.com',
+    sendGrid.setApiKey(process.env.SENDGRID_API_KEY);
+    const msg = {
       to: user.email,
+      from: 'noreply@noreply.com',
       subject: 'Your Password Reset Token',
-      html: generateEmail(`Your Password Reset Token is here!
-      \n\n
-      <a href="${process.env.FRONTEND_URL}/reset?resetToken=${resetToken}">
-        Click Here to Reset Password.
-      </a>
-      `)
-    });
+      html: `
+      <div className="email" style="
+        border: 1px solid black;
+        padding: 20px;
+        font-family: sans-serif;
+        line-height: 2;
+        font-size: 20px;
+      ">
+        <h2>Hello!</h2>
+        <p>
+          Your Password Reset Token is here!
+          \n\n
+          <a href="${process.env.FRONTEND_URL}/reset?resetToken=${resetToken}">
+          Click Here to Reset Password.
+          </a>
+        </p>
+      </div>
+    `
+    };
+    await sendGrid.send(msg);
 
     return { message: 'Reset password' };
   },
@@ -156,7 +169,7 @@ const Mutation = {
     const updatedUser = await ctx.db.mutation.updateUser({
       where: { email: user.email },
       data: {
-        hashedPassword,
+        password: hashedPassword,
         resetToken: null,
         resetTokenExpiry: null
       }

@@ -61,7 +61,7 @@ class Reset extends Component {
                 <input
                   type="password"
                   name="password"
-                  placeholder="password"
+                  placeholder="new password"
                   value={this.state.password}
                   onChange={this.saveToState}
                 />
@@ -71,8 +71,8 @@ class Reset extends Component {
                 Confirm Your Password
                 <input
                   type="password"
-                  name="confirmPassword "
-                  placeholder="confirmPassword "
+                  name="confirmPassword"
+                  placeholder="confirm your new password"
                   value={this.state.confirmPassword}
                   onChange={this.saveToState}
                 />
