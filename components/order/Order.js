@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
-import { format } from 'date-fns';
+import format from 'date-fns/format';
 import gql from 'graphql-tag';
 import Head from 'next/head';
 
