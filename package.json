@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next -p 7777",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p $PORT",
     "test": "jest",
     "heroku-postbuild": "next build"
   },
