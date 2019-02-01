@@ -28,7 +28,13 @@ const DeleteItem = ({ id, children }) => {
           type="button"
           onClick={() => {
             if (confirm('Are you sure you want to delete this item?')) {
-              deleteItem().catch(err => alert(err.message));
+              deleteItem().catch((err) => {
+                if (err.message.includes('undefined')) {
+                  alert('You must be logged in!');
+                } else {
+                  alert(err.message);
+                }
+              });
             }
           }}
         >

@@ -7,7 +7,7 @@
     "dev": "next -p 7777",
     "build": "next build",
     "start": "next start -p $PORT",
-    "test": "jest",
+    "test": "jest --watch",
     "heroku-postbuild": "next build"
   },
   "author": "",
@@ -57,19 +57,16 @@
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.12.3",
     "graphql-tools": "^4.0.3",
-    "jest": "^23.6.0",
+    "jest": "^21.0.0",
     "jest-transform-graphql": "^2.1.0",
     "regenerator-runtime": "^0.13.1"
   },
   "jest": {
-    "moduleNameMapper": {
-      "\\.(css|less|sass|scss)$": "<rootDir>/__mocks__/styleMock.js",
-      "\\.(gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js"
-    },
-    "testEnvironment": "node",
+    "testEnvironment": "jsdom",
     "testMatch": [
       "<rootDir>/__tests__/*.{js,jsx,mjs}"
     ],
+    "setupTestFrameworkScriptFile": "<rootDir>/jest.setup.js",
     "transform": {
       "^.+\\.(js|jsx|mjs)$": "babel-jest"
     },

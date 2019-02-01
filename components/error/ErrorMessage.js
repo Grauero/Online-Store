@@ -20,6 +20,13 @@ const ErrorStyles = styled.div`
 
 const DisplayError = ({ error }) => {
   if (!error || !error.message) return null;
+  if (error.message.includes('undefined')) {
+    return (
+      <ErrorStyles key={error.name}>
+        <p data-test="graphql-error">You must be logged in!</p>
+      </ErrorStyles>
+    );
+  }
   if (error.networkError && error.networkError.result && error.networkError.result.errors.length) {
     return error.networkError.result.errors.map(error => (
       <ErrorStyles key={error.name}>

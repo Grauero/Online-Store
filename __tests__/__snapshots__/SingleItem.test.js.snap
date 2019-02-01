@@ -1,28 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SingleItem/> Errors with a not found item 1`] = `
-<p
-  data-test="graphql-error"
->
-  Items Not Found!
-</p>
-`;
-
-exports[`<SingleItem/> renders with proper data 1`] = `
+exports[`renders with proper data 1`] = `
 <h2>
   Viewing 
   title
 </h2>
 `;
 
-exports[`<SingleItem/> renders with proper data 2`] = `
+exports[`renders with proper data 2`] = `
 <img
   alt="title"
   src="largeImage"
 />
 `;
 
-exports[`<SingleItem/> renders with proper data 3`] = `
+exports[`renders with proper data 3`] = `
 <p>
   description
 </p>

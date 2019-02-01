@@ -11,7 +11,7 @@ import { fakeItem } from '../util/testUtils';
 const image = 'image.jpg';
 
 // mock the global fetch API
-global.fetch = jest.fn().mockResolvedValue({
+global.fetch = jest.fn().mockReturnValue({
   json: () => ({
     secure_url: image,
     eager: [{ secure_url: image }]
