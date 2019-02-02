@@ -16,12 +16,12 @@ Used tools:
   - Styled Components for styling
   - Jest for testing
   - Apollo Client for:
-      GraphQL requests and mutations;
-      caching;
-      state management;
+      - GraphQL requests and mutations;
+      - caching;
+      - state management;
   - GraphQL Yoga on back for:
-      resolving requests and mutations;
-      sending emails;
-      auth with JWT tokens;
+      - resolving requests and mutations;
+      - sending emails;
+      - auth with JWT tokens;
   - Stripe for handling credit cards 
   - Prisma for MongoDB API interfaces, defining schemas
