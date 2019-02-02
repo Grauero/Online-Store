@@ -10,7 +10,15 @@
     "test": "jest --watch",
     "heroku-postbuild": "next build"
   },
-  "author": "",
+  "author": "Grauero",
+  "keywords": [
+    "Next",
+    "GraphQL",
+    "Apollo",
+    "Prisma",
+    "MongoDB"
+  ],
+  "homepage": "https://github.com/Grauero/Online-Store",
   "license": "ISC",
   "dependencies": {
     "@babel/runtime": "^7.2.0",
