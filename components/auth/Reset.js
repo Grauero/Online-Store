@@ -1,21 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Mutation } from 'react-apollo';
-import gql from 'graphql-tag';
 
 import ErrorMessage from '../error/ErrorMessage';
-import { CURRENT_USER_QUERY } from './User';
+import { CURRENT_USER_QUERY, RESET_MUTATION } from '../../mutations/auth';
 import Form from '../styles/Form';
-
-const RESET_MUTATION = gql`
-  mutation RESET_MUTATION($resetToken: String!, $password: String!, $confirmPassword: String!) {
-    resetPassword(resetToken: $resetToken, password: $password, confirmPassword: $confirmPassword) {
-      id
-      email
-      name
-    }
-  }
-`;
 
 class Reset extends Component {
   state = {

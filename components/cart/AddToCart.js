@@ -1,18 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Mutation } from 'react-apollo';
-import gql from 'graphql-tag';
 
-import { CURRENT_USER_QUERY } from '../auth/User';
-
-const ADD_TO_CART_MUTATION = gql`
-  mutation addToCart($id: ID!) {
-    addToCart(id: $id) {
-      id
-      quantity
-    }
-  }
-`;
+import { CURRENT_USER_QUERY } from '../../mutations/auth';
+import { ADD_TO_CART_MUTATION } from '../../mutations/cart';
 
 const AddToCart = ({ id }) => (
   <Mutation
@@ -33,4 +24,3 @@ AddToCart.propTypes = {
 };
 
 export default AddToCart;
-export { ADD_TO_CART_MUTATION };

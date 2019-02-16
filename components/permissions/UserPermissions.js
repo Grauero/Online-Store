@@ -1,22 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Mutation } from 'react-apollo';
-import gql from 'graphql-tag';
 
 import ErrorMessage from '../error/ErrorMessage';
 import Button from '../styles/Button';
 import POSSIBLE_PERMISSIONS from './possiblePermissions';
-
-const UPDATE_PERMISSIONS_MUTATION = gql`
-  mutation updatePermissions($permissions: [Permission], $userId: ID!) {
-    updatePermissions(permissions: $permissions, userId: $userId) {
-      id
-      permissions
-      name
-      email
-    }
-  }
-`;
+import UPDATE_PERMISSIONS_MUTATION from '../../mutations/permissions';
 
 class UserPermissions extends Component {
   state = {

@@ -5,7 +5,7 @@ import toJSON from 'enzyme-to-json';
 import { MockedProvider } from 'react-apollo/test-utils';
 
 import Nav from '../components/meta/Nav';
-import { CURRENT_USER_QUERY } from '../components/auth/User';
+import { CURRENT_USER_QUERY } from '../mutations/auth';
 import { fakeUser, fakeCartItem } from '../util/testUtils';
 
 const notSignedInMocks = [

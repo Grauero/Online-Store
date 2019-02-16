@@ -1,6 +1,5 @@
 import React from 'react';
 import { Query, Mutation } from 'react-apollo';
-import gql from 'graphql-tag';
 import { adopt } from 'react-adopt';
 
 import User from '../auth/User';
@@ -12,18 +11,8 @@ import CloseButton from '../styles/CloseButton';
 import Button from '../styles/Button';
 import formatMoney from '../../util/formatMoney';
 import calcTotalPrice from '../../util/calcTotalPrice';
-
-const LOCAL_STATE_QUERY = gql`
-  query {
-    cartOpen @client
-  }
-`;
-
-const TOGGLE_CART_MUTATION = gql`
-  mutation {
-    toggleCart @client
-  }
-`;
+import { TOGGLE_CART_MUTATION } from '../../mutations/cart';
+import LOCAL_STATE_QUERY from '../../queries/cart';
 
 /* eslint-disable */
 const Composed = adopt({
@@ -73,4 +62,3 @@ const Cart = () => (
 );
 
 export default Cart;
-export { LOCAL_STATE_QUERY, TOGGLE_CART_MUTATION };

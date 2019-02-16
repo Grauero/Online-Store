@@ -1,20 +1,9 @@
 import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
-import gql from 'graphql-tag';
 
 import ErrorMessage from '../error/ErrorMessage';
-import { CURRENT_USER_QUERY } from './User';
+import { CURRENT_USER_QUERY, SIGNUP_MUTATION } from '../../mutations/auth';
 import Form from '../styles/Form';
-
-const SIGNUP_MUTATION = gql`
-  mutation SIGNUP_MUTATION($email: String!, $name: String!, $password: String!) {
-    signup(email: $email, name: $name, password: $password) {
-      id
-      email
-      name
-    }
-  }
-`;
 
 class Signup extends Component {
   state = {
@@ -96,4 +85,3 @@ class Signup extends Component {
 }
 
 export default Signup;
-export { SIGNUP_MUTATION };

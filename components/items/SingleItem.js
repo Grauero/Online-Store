@@ -1,22 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import Head from 'next/head';
 
 import ErrorMessage from '../error/ErrorMessage';
 import SingleItemStyles from '../styles/SingleItemStyles';
-
-const SINGLE_ITEM_QUERY = gql`
-  query SINGLE_ITEM_QUERY($id: ID!) {
-    item(where: { id: $id }) {
-      id
-      title
-      description
-      largeImage
-    }
-  }
-`;
+import { SINGLE_ITEM_QUERY } from '../../queries/items';
 
 const SingleItem = ({ id }) => (
   <Query query={SINGLE_ITEM_QUERY} variables={{ id }}>
@@ -52,4 +41,3 @@ SingleItem.propTypes = {
 };
 
 export default SingleItem;
-export { SINGLE_ITEM_QUERY };

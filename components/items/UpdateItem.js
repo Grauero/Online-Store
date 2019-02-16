@@ -1,32 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Mutation, Query } from 'react-apollo';
-import gql from 'graphql-tag';
 
 import Form from '../styles/Form';
 import ErrorMessage from '../error/ErrorMessage';
-
-const SINGLE_ITEM_QUERY = gql`
-  query SINGLE_ITEM_QUERY($id: ID!) {
-    item(where: { id: $id }) {
-      id
-      title
-      description
-      price
-    }
-  }
-`;
-
-const UPDATE_ITEM_MUTATION = gql`
-  mutation UPDATE_ITEM_MUTATION($id: ID!, $title: String, $description: String, $price: Int) {
-    updateItem(id: $id, title: $title, description: $description, price: $price) {
-      id
-      title
-      description
-      price
-    }
-  }
-`;
+import { UPDATE_ITEM_MUTATION } from '../../mutations/items';
+import { SINGLE_ITEM_QUERY } from '../../queries/items';
 
 class UpdateItem extends Component {
   state = {};

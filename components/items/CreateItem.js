@@ -1,37 +1,16 @@
 import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
-import gql from 'graphql-tag';
 import Router from 'next/router';
 
 import Form from '../styles/Form';
 import ErrorMessage from '../error/ErrorMessage';
-
-const CREATE_ITEM_MUTATION = gql`
-  mutation CREATE_ITEM_MUTATION(
-    $title: String!
-    $description: String!
-    $price: Int!
-    $image: String
-    $largeImage: String
-  ) {
-    createItem(
-      title: $title
-      description: $description
-      price: $price
-      image: $image
-      largeImage: $largeImage
-    ) {
-      id
-    }
-  }
-`;
+import { CREATE_ITEM_MUTATION } from '../../mutations/items';
 
 class CreateItem extends Component {
   state = {
     title: '',
     description: '',
     image: '',
-    largeImage: '',
     price: 0
   };
 
@@ -58,8 +37,7 @@ class CreateItem extends Component {
     const file = await res.json();
 
     this.setState({
-      image: file.secure_url,
-      largeImage: file.eager[0].secure_url
+      image: file.secure_url
     });
   };
 
@@ -142,4 +120,3 @@ class CreateItem extends Component {
 }
 
 export default CreateItem;
-export { CREATE_ITEM_MUTATION };

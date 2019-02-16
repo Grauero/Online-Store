@@ -4,8 +4,9 @@ import wait from 'waait';
 import toJSON from 'enzyme-to-json';
 import { MockedProvider } from 'react-apollo/test-utils';
 
-import Cart, { LOCAL_STATE_QUERY } from '../components/cart/Cart';
-import { CURRENT_USER_QUERY } from '../components/auth/User';
+import Cart from '../components/cart/Cart';
+import LOCAL_STATE_QUERY from '../queries/cart';
+import { CURRENT_USER_QUERY } from '../mutations/auth';
 import { fakeUser, fakeCartItem } from '../util/testUtils';
 
 const mocks = [

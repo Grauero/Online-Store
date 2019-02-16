@@ -2,35 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
 import format from 'date-fns/format';
-import gql from 'graphql-tag';
 import Head from 'next/head';
 
 import OrderItem from './OrderItem';
 import OrderStyles from '../styles/OrderStyles';
 import ErrorMessage from '../error/ErrorMessage';
 import formatMoney from '../../util/formatMoney';
-
-const SINGLE_ORDER_QUERY = gql`
-  query SINGLE_ORDER_QUERY($id: ID!) {
-    order(id: $id) {
-      id
-      charge
-      total
-      createdAt
-      user {
-        id
-      }
-      items {
-        id
-        title
-        description
-        price
-        image
-        quantity
-      }
-    }
-  }
-`;
+import { SINGLE_ORDER_QUERY } from '../../queries/order';
 
 const Order = ({ id }) => (
   <Query query={SINGLE_ORDER_QUERY} variables={{ id }}>
@@ -87,4 +65,3 @@ Order.propTypes = {
 };
 
 export default Order;
-export { SINGLE_ORDER_QUERY };

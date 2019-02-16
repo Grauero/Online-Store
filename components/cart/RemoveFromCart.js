@@ -1,18 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Mutation } from 'react-apollo';
-import gql from 'graphql-tag';
 
-import { CURRENT_USER_QUERY } from '../auth/User';
 import BigButton from '../styles/BigButton';
-
-const REMOVE_FROM_CART_MUTATION = gql`
-  mutation removeFromCart($id: ID!) {
-    removeFromCart(id: $id) {
-      id
-    }
-  }
-`;
+import { CURRENT_USER_QUERY } from '../../mutations/auth';
+import { REMOVE_FROM_CART_MUTATION } from '../../mutations/cart';
 
 // this function gets called when comes response from the server after a mutation has been performed
 const update = (cache, payload) => {
@@ -51,4 +43,3 @@ RemoveFromCart.propTypes = {
 };
 
 export default RemoveFromCart;
-export { REMOVE_FROM_CART_MUTATION };

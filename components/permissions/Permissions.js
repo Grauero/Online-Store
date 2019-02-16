@@ -1,22 +1,11 @@
 import React from 'react';
 import { Query } from 'react-apollo';
-import gql from 'graphql-tag';
 
 import UserPermissions from './UserPermissions';
 import ErrorMessage from '../error/ErrorMessage';
 import Table from '../styles/Table';
 import POSSIBLE_PERMISSIONS from './possiblePermissions';
-
-const ALL_USERS_QUERY = gql`
-  query {
-    users {
-      id
-      name
-      email
-      permissions
-    }
-  }
-`;
+import ALL_USERS_QUERY from '../../queries/permissions';
 
 const showPermissionsTable = (error, data) => {
   if (error || !data) {

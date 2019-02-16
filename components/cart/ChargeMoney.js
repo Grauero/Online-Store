@@ -2,26 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import StripeCheckout from 'react-stripe-checkout';
 import { Mutation } from 'react-apollo';
-import gql from 'graphql-tag';
 import NProgress from 'nprogress';
 import Router from 'next/router';
 
-import User, { CURRENT_USER_QUERY } from '../auth/User';
+import User from '../auth/User';
 import calcTotalPrice from '../../util/calcTotalPrice';
-
-const CREATE_ORDER_MUTATION = gql`
-  mutation createOrder($token: String!) {
-    createOrder(token: $token) {
-      id
-      charge
-      total
-      items {
-        id
-        title
-      }
-    }
-  }
-`;
+import { CURRENT_USER_QUERY } from '../../mutations/auth';
+import { CREATE_ORDER_MUTATION } from '../../mutations/cart';
 
 function totalItems(cart) {
   return cart.reduce((tally, cartItem) => tally + cartItem.quantity, 0);
@@ -68,4 +55,3 @@ ChargeMoney.propTypes = {
 };
 
 export default ChargeMoney;
-export { CREATE_ORDER_MUTATION };

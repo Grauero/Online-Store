@@ -5,7 +5,8 @@ import wait from 'waait';
 import { MockedProvider } from 'react-apollo/test-utils';
 
 import { fakeItem } from '../util/testUtils';
-import SingleItem, { SINGLE_ITEM_QUERY } from '../components/items/SingleItem';
+import SingleItem from '../components/items/SingleItem';
+import { SINGLE_ITEM_QUERY } from '../queries/items';
 
 it('renders with proper data', async () => {
   const mocks = [

@@ -1,20 +1,9 @@
 import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
-import gql from 'graphql-tag';
 
 import ErrorMessage from '../error/ErrorMessage';
-import { CURRENT_USER_QUERY } from './User';
+import { CURRENT_USER_QUERY, SIGNIN_MUTATION } from '../../mutations/auth';
 import Form from '../styles/Form';
-
-const SIGNIN_MUTATION = gql`
-  mutation SIGNIN_MUTATION($email: String!, $password: String!) {
-    signin(email: $email, password: $password) {
-      id
-      email
-      name
-    }
-  }
-`;
 
 class Signin extends Component {
   state = {

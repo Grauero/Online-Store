@@ -5,8 +5,9 @@ import toJSON from 'enzyme-to-json';
 import { MockedProvider } from 'react-apollo/test-utils';
 import { ApolloConsumer } from 'react-apollo';
 
-import RemoveFromCart, { REMOVE_FROM_CART_MUTATION } from '../components/cart/RemoveFromCart';
-import { CURRENT_USER_QUERY } from '../components/auth/User';
+import RemoveFromCart from '../components/cart/RemoveFromCart';
+import { REMOVE_FROM_CART_MUTATION } from '../mutations/cart';
+import { CURRENT_USER_QUERY } from '../mutations/auth';
 import { fakeUser, fakeCartItem } from '../util/testUtils';
 
 global.alert = console.log;

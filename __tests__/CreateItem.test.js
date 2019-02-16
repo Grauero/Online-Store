@@ -5,7 +5,8 @@ import toJSON from 'enzyme-to-json';
 import Router from 'next/router';
 import { MockedProvider } from 'react-apollo/test-utils';
 
-import CreateItem, { CREATE_ITEM_MUTATION } from '../components/items/CreateItem';
+import CreateItem from '../components/items/CreateItem';
+import { CREATE_ITEM_MUTATION } from '../mutations/items';
 import { fakeItem } from '../util/testUtils';
 
 const image = 'image.jpg';

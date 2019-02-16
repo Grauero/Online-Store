@@ -1,22 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import Head from 'next/head';
 import Link from 'next/link';
 
 import PaginationStyles from '../styles/PaginationStyles';
 import { perPage } from '../../config';
-
-const PAGINATION_QUERY = gql`
-  query PAGINATION_QUERY {
-    itemsConnection {
-      aggregate {
-        count
-      }
-    }
-  }
-`;
+import PAGINATION_QUERY from '../../queries/pagination';
 
 const Pagination = ({ page }) => (
   <Query query={PAGINATION_QUERY}>
@@ -72,4 +62,3 @@ Pagination.propTypes = {
 };
 
 export default Pagination;
-export { PAGINATION_QUERY };

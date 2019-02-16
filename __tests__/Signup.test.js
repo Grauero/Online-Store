@@ -5,8 +5,8 @@ import toJSON from 'enzyme-to-json';
 import { MockedProvider } from 'react-apollo/test-utils';
 import { ApolloConsumer } from 'react-apollo';
 
-import Signup, { SIGNUP_MUTATION } from '../components/auth/Signup';
-import { CURRENT_USER_QUERY } from '../components/auth/User';
+import Signup from '../components/auth/Signup';
+import { SIGNUP_MUTATION, CURRENT_USER_QUERY } from '../mutations/auth';
 import { fakeUser } from '../util/testUtils';
 
 function type(wrapper, name, value) {
