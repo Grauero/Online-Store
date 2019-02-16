@@ -2,26 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
-import styled from 'styled-components';
 
 import { CURRENT_USER_QUERY } from '../auth/User';
+import BigButton from '../styles/BigButton';
 
 const REMOVE_FROM_CART_MUTATION = gql`
   mutation removeFromCart($id: ID!) {
     removeFromCart(id: $id) {
       id
     }
-  }
-`;
-
-const BigButton = styled.button`
-  font-size: 3rem;
-  background: none;
-  border: 0;
-
-  &:hover {
-    color: ${props => props.theme.red};
-    cursor: pointer;
   }
 `;
 

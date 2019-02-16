@@ -1,26 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 
 import RemoveFromCart from './RemoveFromCart';
 import formatMoney from '../../util/formatMoney';
-
-const CartItemStyles = styled.li`
-  padding: 1rem 0;
-  border-bottom: 1px solid ${props => props.theme.lightgrey};
-  display: grid;
-  align-items: center;
-  grid-template-columns: auto 1fr auto;
-
-  img {
-    margin-right: 10px;
-  }
-
-  h3,
-  p {
-    margin: 0;
-  }
-`;
+import CartItemStyles from '../styles/CartItemStyles';
 
 const CartItem = ({ cartItem }) => {
   // check if item still exists in store

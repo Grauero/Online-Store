@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
-import styled from 'styled-components';
 
 import Item from './Item';
 import Pagination from '../pagination/Pagination';
+import { Center, ItemsList } from '../styles/ItemsStyles';
 import { perPage } from '../../config';
 
 const ALL_ITEMS_QUERY = gql`
@@ -19,18 +19,6 @@ const ALL_ITEMS_QUERY = gql`
       largeImage
     }
   }
-`;
-
-const Center = styled.div`
-  text-align: center;
-`;
-
-const ItemsList = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 60px;
-  max-width: ${props => props.theme.maxWidth};
-  margin: 0 auto;
 `;
 
 const Items = ({ page }) => (
