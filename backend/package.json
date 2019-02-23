@@ -11,6 +11,11 @@
     "MongoDB"
   ],
   "homepage": "https://github.com/Grauero/Online-Store",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Grauero/Online-Store.git"
+  },
+  "private": true,
   "license": "ISC",
   "scripts": {
     "start": "nodemon -e js,graphql -x node src/index.js",

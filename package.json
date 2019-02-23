@@ -19,6 +19,11 @@
     "MongoDB"
   ],
   "homepage": "https://github.com/Grauero/Online-Store",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Grauero/Online-Store.git"
+  },
+  "private": true,
   "license": "ISC",
   "dependencies": {
     "@babel/runtime": "^7.2.0",
