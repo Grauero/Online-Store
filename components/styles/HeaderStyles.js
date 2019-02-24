@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 
 export const Logo = styled.h1`
+  width: 100%;
+  margin: 0 0.7em;
   font-size: 4rem;
-  margin-left: 2rem;
   position: relative;
   z-index: 2;
-  transform: skew(-7deg);
+  transform: skew(-20deg);
 
   a {
     padding: 0.5rem 1rem;
@@ -16,8 +17,15 @@ export const Logo = styled.h1`
   }
 
   @media (max-width: 1300px) {
-    margin: 0;
+    margin-left: 0.5em;
+    width: 90%;
     text-align: center;
+  }
+
+  @media (max-width: 450px) {
+    margin: 0;
+    width: 100%;
+    transform: skew(0deg);
   }
 `;
 

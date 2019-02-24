@@ -27,7 +27,7 @@ const Form = styled.form`
   select {
     width: 100%;
     padding: 0.5rem;
-    font-size: 1rem;
+    font-size: 1.5rem;
     border: 1px solid black;
     &:focus {
       outline: 0;
@@ -59,6 +59,14 @@ const Form = styled.form`
     &[aria-busy='true']::before {
       background-size: 50% auto;
       animation: ${loading} 0.5s linear infinite;
+    }
+  }
+
+  @media (max-width: 450px) {
+    input,
+    textarea,
+    select {
+      font-size: 1.5rem;
     }
   }
 `;

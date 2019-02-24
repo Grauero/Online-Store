@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import StripeCheckout from 'react-stripe-checkout';
 import { Mutation } from 'react-apollo';
-import NProgress from 'nprogress';
 import Router from 'next/router';
 
 import User from '../auth/User';
@@ -15,8 +14,6 @@ function totalItems(cart) {
 }
 
 async function onToken(res, createOrder) {
-  NProgress.start();
-
   const order = await createOrder({
     variables: { token: res.id }
   });

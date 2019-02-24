@@ -20,7 +20,6 @@ const NavStyles = styled.ul`
     color: ${props => props.theme.black};
     font-weight: 800;
     @media (max-width: 700px) {
-      font-size: 10px;
       padding: 0 10px;
     }
     &:before {
@@ -49,19 +48,33 @@ const NavStyles = styled.ul`
     &:hover,
     &:focus {
       outline: none;
-      &:after {
-        width: calc(100% - 60px);
-      }
-      @media (max-width: 700px) {
-        width: calc(100% - 10px);
-      }
     }
+  }
+  a:first-child {
+    margin-left: 1em;
   }
   @media (max-width: 1300px) {
     border-top: 1px solid ${props => props.theme.lightgrey};
     width: 100%;
     justify-content: center;
     font-size: 1.5rem;
+  }
+  @media (max-width: 500px) {
+    flex-direction: column;
+    align-items: flex-start;
+
+    button,
+    a {
+      width: 100%;
+    }
+    a:first-child {
+      margin-left: 0em;
+    }
+
+    a::before,
+    button::before {
+      content: none;
+    }
   }
 `;
 

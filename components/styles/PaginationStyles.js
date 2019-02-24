@@ -22,6 +22,12 @@ const PaginationStyles = styled.div`
     color: grey;
     pointer-events: none;
   }
+
+  @media (max-width: 450px) {
+    p {
+      display: none;
+    }
+  }
 `;
 
 export default PaginationStyles;

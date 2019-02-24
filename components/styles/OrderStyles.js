@@ -23,7 +23,7 @@ const OrderStyles = styled.div`
   .order-item {
     border-bottom: 1px solid ${props => props.theme.offWhite};
     display: grid;
-    grid-template-columns: 300px 1fr;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
     grid-gap: 2rem;
     margin: 2rem 0;

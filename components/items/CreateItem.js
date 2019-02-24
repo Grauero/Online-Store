@@ -11,6 +11,7 @@ class CreateItem extends Component {
     title: '',
     description: '',
     image: '',
+    largeImage: '',
     price: 0
   };
 
@@ -37,7 +38,8 @@ class CreateItem extends Component {
     const file = await res.json();
 
     this.setState({
-      image: file.secure_url
+      image: file.secure_url,
+      largeImage: file.eager[0].secure_url
     });
   };
 

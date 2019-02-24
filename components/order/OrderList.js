@@ -13,6 +13,7 @@ const OrderUl = styled.ul`
   display: grid;
   grid-gap: 4rem;
   grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
+  padding-left: 0px;
 `;
 
 const OrderList = () => (
