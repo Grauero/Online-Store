@@ -14,7 +14,15 @@ class CustomDocument extends Document {
   render() {
     return (
       <html lang="en">
-        <Head>{this.props.styleTags}</Head>
+        <Head>
+          <meta charset="UTF-8" />
+          <meta name="description" content="Online Store" />
+          <meta name="keywords" content="Next, GraphQL, Apollo, Prisma, MongoDB, Online Store" />
+          <meta name="author" content="Grauero" />
+          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+          {this.props.styleTags}
+        </Head>
         <body>
           <Main />
           <NextScript />

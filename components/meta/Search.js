@@ -7,7 +7,6 @@ import debounce from 'lodash.debounce';
 import { DropDown, DropDownItem, SearchStyles } from '../styles/DropDown';
 import SEARCH_ITEMS_QUERY from '../../queries/meta';
 
-
 function routeToItem(item) {
   Router.push({
     pathname: '/item',
@@ -54,6 +53,7 @@ class AutoComplete extends Component {
                       type: 'search',
                       placeholder: 'Search For An Item',
                       id: 'search',
+                      role: 'searchbox',
                       className: this.state.loading ? 'loading' : '',
                       onChange: (e) => {
                         e.persist();

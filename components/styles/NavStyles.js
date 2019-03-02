@@ -6,6 +6,10 @@ const NavStyles = styled.ul`
   display: flex;
   justify-self: end;
   font-size: 2rem;
+  li {
+    display: inline-block;
+    list-style-type: none;
+  }
   a,
   button {
     padding: 1rem 3rem;
@@ -61,15 +65,24 @@ const NavStyles = styled.ul`
   }
   @media (max-width: 500px) {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
 
     button,
     a {
+      /* display: inline-block; */
+      padding-left: 40%;
       width: 100%;
+      text-align: center;
     }
     a:first-child {
       margin-left: 0em;
     }
+    /* button:last-child {
+      display: inline;
+    }
+    div:last-child {
+      display: inline;
+    } */
 
     a::before,
     button::before {
