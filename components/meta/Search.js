@@ -45,10 +45,11 @@ class AutoComplete extends Component {
           {({
             getInputProps, getItemProps, isOpen, inputValue, highlightedIndex
           }) => (
-            <div>
+            <div role="navigation" aria-label="main navigation">
               <ApolloConsumer>
                 {client => (
                   <input
+                    aria-label="search box"
                     {...getInputProps({
                       type: 'search',
                       placeholder: 'Search For An Item',
