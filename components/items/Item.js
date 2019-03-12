@@ -14,6 +14,26 @@ import { CURRENT_USER_QUERY } from '../../mutations/auth';
 const Item = ({ item }) => (
   <Query query={CURRENT_USER_QUERY}>
     {({ data: { me } }) => {
+      if (!me) {
+        return (
+          <ItemStyles>
+            {item.image && <img src={item.image} alt={item.title} />}
+            <Title>
+              <Link
+                href={{
+                  pathname: '/item',
+                  query: { id: item.id }
+                }}
+              >
+                <a>{item.title}</a>
+              </Link>
+            </Title>
+            <PriceTag>{formatMoney(item.price)}</PriceTag>
+            <p>{item.description}</p>
+          </ItemStyles>
+        );
+      }
+
       const editButton = item.user.id === me.id ? (
         <Link
           href={{
