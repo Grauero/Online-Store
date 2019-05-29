@@ -1,9 +1,9 @@
-# Online store
+# Online store [![Build Status](https://travis-ci.org/Grauero/Online-Store.svg?branch=master)](https://travis-ci.org/Grauero/Online-Store)
 https://online-store-client.herokuapp.com/
 
 ![landing](http://i.piccy.info/i9/dbc162cb2a231d82a6a6c7a1feed68fc/1552382807/224775/1306930/landing.jpg)
 
-Online store built on Next/GraphQL
+Online store built on React/GraphQL
 
 Authenticated users can create new products in store, search for required items, add items in cart and checkout orders
 
