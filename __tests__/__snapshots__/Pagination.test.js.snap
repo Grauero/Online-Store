@@ -2,7 +2,7 @@
 
 exports[`<Pagination/> renders pagination for 18 items 1`] = `
 <div
-  className="PaginationStyles-sc-3ee0im-0 cvNuPA"
+  className="PaginationStyles-sc-3ee0im-0 bwejtc"
   data-test="pagination"
 >
   <SideEffect(Head)>

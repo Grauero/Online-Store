@@ -3,7 +3,6 @@ import { mount } from 'enzyme';
 import wait from 'waait';
 import toJSON from 'enzyme-to-json';
 import { MockedProvider } from 'react-apollo/test-utils';
-import { ApolloConsumer } from 'react-apollo';
 
 import AddToCart from '../components/cart/AddToCart';
 import { CURRENT_USER_QUERY } from '../mutations/auth';
@@ -57,38 +56,6 @@ describe('<AddToCart/>', () => {
     wrapper.update();
 
     expect(toJSON(wrapper.find('button'))).toMatchSnapshot();
-  });
-
-  it('adds an item to cart when clicked', async () => {
-    let apolloClient;
-    const wrapper = mount(
-      <MockedProvider mocks={mocks}>
-        <ApolloConsumer>
-          {(client) => {
-            apolloClient = client;
-            return <AddToCart id="abc123" />;
-          }}
-        </ApolloConsumer>
-      </MockedProvider>
-    );
-    await wait();
-    wrapper.update();
-    const {
-      data: { me }
-    } = await apolloClient.query({ query: CURRENT_USER_QUERY });
-
-    expect(me.cart).toHaveLength(0);
-
-    wrapper.find('button').simulate('click');
-    await wait();
-    // check if the item is in the cart
-    const {
-      data: { me: me2 }
-    } = await apolloClient.query({ query: CURRENT_USER_QUERY });
-
-    expect(me2.cart).toHaveLength(1);
-    expect(me2.cart[0].id).toBe('id123');
-    expect(me2.cart[0].quantity).toBe(3);
   });
 
   it('changes from add to adding when clicked', async () => {
